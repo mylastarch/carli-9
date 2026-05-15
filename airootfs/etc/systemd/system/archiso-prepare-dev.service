@@ -1,0 +1,13 @@
+[Unit]
+Description=Prepare /dev and bind-mount system pseudo-filesystems for installer
+DefaultDependencies=no
+After=local-fs.target
+Before=calamares.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash -c 'mountpoint -q /dev || mount -t devtmpfs none /dev; for d in proc sys run; do mountpoint -q /$d || mount --rbind /$d /$d; done'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

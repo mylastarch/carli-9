@@ -1,0 +1,7 @@
+root:x:0:root
+adm:x:4:default
+wheel:x:10:default
+uucp:x:14:default
+storage:x:1:default
+network:x:2:default
+default:x:1000:
